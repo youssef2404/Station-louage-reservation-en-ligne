@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bienvenue</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".login").hide();
+			$(".register_li").addClass("active");
+
+			$(".login_li").click(function(){
+			  $(this).addClass("active");
+			  $(".register_li").removeClass("active");
+			  $(".login").show();
+			   $(".register").hide();
+			})
+
+			$(".register_li").click(function(){
+			  $(this).addClass("active");
+			  $(".login_li").removeClass("active");
+			  $(".register").show();
+			   $(".login").hide();
+			})
+		});
+	</script>
+</head>
+<body>
+  <div class="wrapper">
+  <div class="left">
+      <h3>باب عليوة الذكية</h3>   
+    <img src="ticket.png" alt="Rocket_image">
+  </div>
+  <div class="right">
+    <div class="tabs">
+      <ul>
+        <li class="register_li">Bienvenue</li>
+     
+       </ul>
+    </div>
+    
+    <div class="register">
+     
+	  <div class="bienvenue">
+	 
+	   <p> Rendons votre reseravtion des Louages plus facile </p>
+	  </div>
+      <div class="btn"><a href="reservation.html">Reserver votre ticket</a></div>
+	  
+    </div>
+
+    
+  </div>
+</div>
+</body>
+</html>

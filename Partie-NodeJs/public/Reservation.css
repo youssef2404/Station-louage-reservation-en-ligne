@@ -1,0 +1,91 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navbar-brand{
+    font-size: 2rem;
+    color:black;
+    font-family: 'Uchen', serif;
+}
+.navbar-brand:hover{
+    color: black;
+    
+
+}
+.nav-link{
+    margin-right: 10px;
+    margin-left: 10px;
+    color: black;
+    font-family: 'Uchen', serif; 
+    text-transform: uppercase;
+}
+.nav-link:hover{
+    color: black;
+}
+.search{
+    height: 40px;
+    width: 150px;
+    border-radius: 60px;
+    outline: none;
+    margin-right: -30px;
+    border: 2px solid rgb(245, 204, 166);
+	margin-top
+}
+.btn1{
+    height: 45px;
+    width: 35%;
+    border: none;
+    outline: none;
+    background: #5380BC;
+    color: white;
+    font-weight: 700;
+    border-radius: 20px;
+	margin-top: 20px;
+
+}
+
+.Main{
+   background: #dfdfdf;
+    background-size: cover;
+    height: 80vh;
+    background-position: 50% 50%;
+    width: 100%;  
+    
+}
+.Main h1{
+    font-size : 4rem;
+    font-weight: 500;
+}
+ .card{
+	 border : none;
+ }
+.Main select{
+	 height: 40px;
+	 width: 90%;
+     outline: none;
+     padding: 0 20px;	 
+ }
+ .Main span{
+	 color: black;
+	 font-weight: 600;
+ }
+.Main bnt6{
+	height: 40px;
+    width: 100px;
+    outline: none;
+    border: none;
+    background:rgb(245, 204, 166) ;
+    color: white;
+    border-radius: 60px;
+    font-weight: 700;
+	
+	
+}
+
+.h1{
+    font-weight: 700;
+}
+
+
+

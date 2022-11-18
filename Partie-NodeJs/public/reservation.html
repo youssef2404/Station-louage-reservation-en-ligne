@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="Reservation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Uchen&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawsome.com/c26cd2166c.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+	.qr-code {
+	max-width: 200px;
+	margin: 10px;
+	}
+</style>
+	<title>باب عليوة الذكية</title>
+  </head>
+  <body>
+   
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">باب عليوة الذكية</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon " > <i class="fas fa hamburger"></i></span>
+          </button>
+         
+        </div>
+      </nav>
+      <section class="Main">
+          <div class="container py-5">
+              <div class="row py-4"> 
+                  <div class="col-lg-10 py-5 mx-auto">
+                    <h1 class=" text-black text-center"> Réservation des Tickets</h1>
+                    
+					<div class="card mt-3">
+					    <div class=" card-body">
+					        <div class="row">
+					            <div class="col-lg-3">
+								   <span>Station de départ</span>
+								   <select class="mt-2" name="" id="depart">
+								     <option value ="">-Station</option>
+									 <option value ="Beb Alioua">Beb Alioua</option>
+								   </select>
+					            </div>
+								
+								<div class="col-lg-3">
+								   <span>Ville</span>
+								   <select class="mt-2" name="" id="ville">
+								   <option value ="">-Région</option>
+									 <option value ="Nabeul">Nabeul</option>
+								   </select>
+								   
+					            </div>
+								
+								<div class="col-lg-3">
+								   <span>Station d'Arrivee</span>
+								   <select class="mt-2" name="" id="arrivee">
+								     <option value ="">-Station</option>
+								<option value ="Hawariya">Hawariya</option>
+								<option value ="Mrezga">Mrezga</option>
+								<option value ="Grombelia">Grombelia</option>
+								<option value ="Klibia">Klibia</option>
+								<option value ="Korba">Korba</option>
+								<option value ="Manzel_Tmim">Manzel Tmim</option>
+									 
+								   </select>
+								   
+					            </div>
+								<div class="col-lg-3">
+			<button onclick="sendtodb()"class="btn1" type="submit" id="generate">Valider</button>
+							
+								</div>
+							
+					        </div>
+					    </div>
+					</div>
+					 
+				 </div>
+              </div>
+          </div>
+		  <div  class="text-center">
+		  <button onclick="printDiv()"class="btn1" type="submit" id="imprimer">Imprimer</button>
+	<div>
+		<textarea hidden name="champTexte" id="id" rows="3" cols="50">
+</textarea>
+		<p id="date" hidden><p>
+	</div>
+	<!-- Get a Placeholder image initially,
+	this will change according to the
+	data entered later -->
+	<div id="qr" >
+	<img src=
+"https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0"
+		class="qr-code img-thumbnail img-responsive" />
+		</div>
+	</div>
+      </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<script src=
+	"https://code.jquery.com/jquery-3.5.1.js">
+</script>
+<script>
+
+// Function to HTML encode the text
+	// This creates a new hidden element,
+	// inserts the given text into it
+	// and outputs it out as HTML
+	function htmlEncode(value) {
+	return $('<div/>').text(value)
+		.html();
+	}
+
+	$(function () {
+
+	// Specify an onclick function
+	// for the generate button
+	$('#generate').click(function () {
+	   $.ajax({    //create an ajax request to display.php
+        type: "GET",
+        url: "http://192.168.112.149:3001/dernierticket/40",             
+        dataType: "html",   //expect html to be returned                
+        success: function(response){                    
+           var result= $.parseJSON(response);
+
+            $.each( result, function( key, value ) { 
+             
+             // Generate the link that would be
+		// used to generate the QR Code
+		// with the given data
+		let finalURL =
+'https://chart.googleapis.com/chart?cht=qr&chl=' +
+		htmlEncode(value['id']+"Z"+$('#arrivee').val())+
+		'&chs=160x160&chld=L|0'
+
+		// Replace the src of the image with
+		// the QR code image
+		$('.qr-code').attr('src', finalURL);
+
+                 }); 
+		
+
+        }
+});
+
+   
+
+		
+    } );
+	
+	
+	});
+
+
+</script>
+
+	
+	
+
+	
+
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div class="piece">
+		
+		    <img src="ticket.png">
+		    <p>باب عليوة الذكية</p>
+		
+	        <h1>TICKET</h1>
+		
+			<p>Depart:<strong>depart</strong></p>
+			<p>ville:<strong>ville</strong></p>
+			<p>arrivee:<strong>arrivee</strong></p>
+		
+</div>
+	<div class="generateurbtn">
+	<button class="submit" onclick="generateurpdf()">telecharger ticket</button>
+	<div class="btn"><a href="interface.html">voyageur suivant</a></div>
+	</div>	
+</body>
+<script>
+function generateurpdf(){
+	const piece=document.querySelector(".piece")
+
+       
+	
+	
+     html2pdf().from(piece).save()
+
+         
+}
+
+
+</script>
+</html>
