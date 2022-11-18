@@ -1,0 +1,13 @@
+<?php
+
+$db_name="beb_alioua";
+$db_user="root";
+$db_password="";
+$server="localhost";
+
+$conn = new mysqli($server,$db_user,$db_password,$db_name);
+
+if(!conn)
+	echo "Connection error".mysqli_connect_error();
+
+?>
